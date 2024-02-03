@@ -22,10 +22,12 @@ def main():
     qr_code = qrcode_scanner(key='qrcode_scanner')
 
     if qr_code:
-        st.write(qr_code)
+        # st.info(f"QR Code detected: {qr_code}")
+        # st.write(qr_code)
 
         if validators.url(str(qr_code)):
-            nav_to(qr_code)
+            link = f"[Click here to go to the URL]({qr_code})"
+            st.markdown(link, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
