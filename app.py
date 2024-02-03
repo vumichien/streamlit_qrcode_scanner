@@ -26,8 +26,9 @@ def main():
         # st.write(qr_code)
 
         if validators.url(str(qr_code)):
-            link = f"[Click here to go to the URL]({qr_code})"
-            st.markdown(link, unsafe_allow_html=True)
+            # link = f"[Click here to go to the URL]({qr_code})"
+            # st.markdown(link, unsafe_allow_html=True)
+            st.link_button("URL link", qr_code, type="secondary")
 
 
 if __name__ == "__main__":
