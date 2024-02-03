@@ -2,6 +2,18 @@ from src.streamlit_qrcode_scanner import qrcode_scanner
 import streamlit as st
 import webbrowser
 import validators
+from streamlit_javascript import st_javascript
+
+
+# def nav_to(url):
+#     js = f'window.open("{url}", "_blank").then(r => window.parent.location.href);'
+#     st_javascript(js)
+
+def nav_to(url):
+    nav_script = """
+        <meta http-equiv="refresh" content="0; url='%s'">
+    """ % (url)
+    st.write(nav_script, unsafe_allow_html=True)
 
 
 def main():
@@ -15,17 +27,7 @@ def main():
         # Kiểm tra xem qr_code có phải là URL hợp lệ không
         if validators.url(qr_code):
             # Tạo một trang HTML tạm thời với JavaScript để chuyển hướng
-            html_string = f"""
-                    <html>
-                        <head>
-                            <meta http-equiv="refresh" content="0; URL='{qr_code}'" />
-                        </head>
-                        <body>
-                            <p>If you are not redirected, please click <a href="{qr_code}">here</a>.</p>
-                        </body>
-                    </html>
-                    """
-            st.markdown(html_string, unsafe_allow_html=True)
+            nav_to(qr_code)
 
 
 if __name__ == "__main__":
