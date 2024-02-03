@@ -3,15 +3,17 @@ import streamlit as st
 import validators
 
 
-# def nav_to(url):
-#     js = f'window.open("{url}", "_blank").then(r => window.parent.location.href);'
-#     st_javascript(js)
-
 def nav_to(url):
-    nav_script = """
-        <meta http-equiv="refresh" content="0; url='%s'">
-    """ % (url)
-    st.write(nav_script, unsafe_allow_html=True)
+    # nav_script = """
+    #     <meta http-equiv="refresh" content="0; url='%s'">
+    # """ % url
+    # st.write(nav_script, unsafe_allow_html=True)
+    nav_script = f"""
+            <script>
+                window.location.href = '{url}';
+            </script>
+        """
+    st.markdown(nav_script, unsafe_allow_html=True)
 
 
 def main():
