@@ -27,12 +27,7 @@ def main():
         # Kiểm tra xem qr_code có phải là URL hợp lệ không
         if validators.url(qr_code):
             # Tạo một trang HTML tạm thời với JavaScript để chuyển hướng
-            js = f"""
-                <script>
-                    window.location.href = '{qr_code}';
-                </script>
-                """
-            st.markdown(js, unsafe_allow_html=True)
+            nav_to(qr_code)
 
 
 if __name__ == "__main__":
