@@ -29,6 +29,8 @@ def main():
             # link = f"[Click here to go to the URL]({qr_code})"
             # st.markdown(link, unsafe_allow_html=True)
             st.link_button("URL link", qr_code, type="secondary")
+        else:
+            st.error(f"Invalid URL : {qr_code}")
 
 
 if __name__ == "__main__":
