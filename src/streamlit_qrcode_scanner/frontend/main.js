@@ -75,7 +75,7 @@ function sendValue(value) {
               canvas.innerHTML = lastResult;
               // Handle on success condition with the decoded message.
               console.log(`Scan result ${decodedText}`, decodedResult);
-              beep();
+              // beep();
               sendValue(lastResult);                
             }
         }
