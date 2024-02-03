@@ -14,8 +14,18 @@ def main():
 
         # Kiểm tra xem qr_code có phải là URL hợp lệ không
         if validators.url(qr_code):
-            # Mở URL trong trình duyệt web mặc định
-            webbrowser.open(qr_code)
+            # Tạo một trang HTML tạm thời với JavaScript để chuyển hướng
+            html_string = f"""
+                    <html>
+                        <head>
+                            <meta http-equiv="refresh" content="0; URL='{qr_code}'" />
+                        </head>
+                        <body>
+                            <p>If you are not redirected, please click <a href="{qr_code}">here</a>.</p>
+                        </body>
+                    </html>
+                    """
+            st.markdown(html_string, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
