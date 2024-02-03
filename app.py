@@ -8,19 +8,10 @@ import validators
 #     st_javascript(js)
 
 def nav_to(url):
-    # nav_script = """
-    #     <meta http-equiv="refresh" content="0; url='%s'">
-    # """ % (url)
-    js = f"""
-            <script>
-                // Hiển thị thông báo và yêu cầu xác nhận từ người dùng trước khi chuyển hướng
-                if (confirm("Would you like to visit this address??\\n{url}")) {{
-                    window.location.href = "{url}";
-                }}
-            </script>
-        """
-    st.markdown(js, unsafe_allow_html=True)
-    # st.write(nav_script, unsafe_allow_html=True)
+    nav_script = """
+        <meta http-equiv="refresh" content="0; url='%s'">
+    """ % (url)
+    st.write(nav_script, unsafe_allow_html=True)
 
 
 def main():
